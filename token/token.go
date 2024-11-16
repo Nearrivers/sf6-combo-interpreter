@@ -5,8 +5,7 @@ const (
 	EOF    = "EOF"
 
 	// Identifiants + input
-	INPUT  = "INPUT"
-	BUTTON = "BUTTON"
+	INPUT = "INPUT"
 
 	// DÉLIMITEURS / Liens
 	COMMA = ","
@@ -21,14 +20,16 @@ const (
 	MINUS = "-"
 
 	// Mots-clés
-	DASH           = "dash"
-	DRIVE_RUSH     = "DR"
-	DRIVE_IMPACT   = "DI"
-	EXTENSION      = "..."
-	PUNISH_COUNTER = "[PC]"
-	COUNTER_HIT    = "[CH]"
-	CRITICAL_ART   = "(CA)"
-	TIGER_KNEE     = "tk"
+	DASH                 = "dash"
+	DRIVE_RUSH           = "DR"
+	DRIVE_IMPACT         = "DI"
+	EXTENSION            = "..."
+	PUNISH_COUNTER       = "[PC]"
+	SHORT_PUNISH_COUNTER = "PC"
+	COUNTER_HIT          = "[CH]"
+	SHORT_COUNTER_HIT    = "CH"
+	CRITICAL_ART         = "(CA)"
+	TIGER_KNEE           = "tk"
 
 	// Boutons
 	// MEDIUM = "M"
@@ -50,6 +51,8 @@ var keywords = map[string]TokenType{
 	"...":  EXTENSION,
 	"[CH]": COUNTER_HIT,
 	"[PC]": PUNISH_COUNTER,
+	"CH":   SHORT_COUNTER_HIT,
+	"PC":   SHORT_PUNISH_COUNTER,
 	"(CA)": CRITICAL_ART,
 	"tk":   TIGER_KNEE,
 }

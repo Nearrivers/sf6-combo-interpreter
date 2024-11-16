@@ -111,26 +111,17 @@ func (l *Lexer) NextToken() token.Token {
 		return tok
 	case '[':
 		// [] pour [CH] ou [PC] ou indiquer qu'il faut maintenir l'input
-		// ou le bouton
+		// ou le bouton. [2] par exemple pour maintenir bas
+		// [HK] par exemple pour maitenir Heavy Kick
+
 		tok.Literal = l.readIdentifierUntilChar(']')
 		if token.IsIdent(tok.Literal) {
 			tok.Type = token.LookupIdent(tok.Literal)
 			return tok
 		}
 
-		// [2] par exemple pour maintenir bas
-		if isDigit(l.peekChar()) {
-			tok.Type = token.INPUT
-			return tok
-		}
-
-		// [HK] par exemple pour maitenir Heavy Kick
-		if isLetter(l.peekChar()) {
-			tok.Type = token.BUTTON
-			return tok
-		}
-
-		tok.Type = token.UNKOWN
+		tok.Type = token.INPUT
+		return tok
 	case 'D':
 		// DI pour Drive Impact
 		tok.Literal = l.readIdentifier()

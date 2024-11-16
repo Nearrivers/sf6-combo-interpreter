@@ -163,4 +163,35 @@ func TestNextToken(t *testing.T) {
 
 		assertInput(t, input, cases)
 	})
+
+	t.Run("charge input", func(t *testing.T) {
+		input := `5MP, 2MP, [2]8HK`
+
+		cases := []Case{
+			{token.INPUT, "5MP"},
+			{token.COMMA, ","},
+			{token.INPUT, "2MP"},
+			{token.COMMA, ","},
+			{token.INPUT, "[2]"},
+			{token.INPUT, "8HK"},
+		}
+
+		assertInput(t, input, cases)
+	})
+
+	t.Run("multiple possibilities", func(t *testing.T) {
+		input := `5LP~LP > 214HP/236HP`
+
+		cases := []Case{
+			{token.INPUT, "5LP"},
+			{token.TILDA, "~"},
+			{token.INPUT, "LP"},
+			{token.GT, ">"},
+			{token.INPUT, "214HP"},
+			{token.SLASH, "/"},
+			{token.INPUT, "236HP"},
+		}
+
+		assertInput(t, input, cases)
+	})
 }
